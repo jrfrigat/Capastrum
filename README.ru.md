@@ -6,7 +6,7 @@
 
 # Capastrum - MCP + ACP для .NET
 
-<p align="center">🌐 <a href="README.md">English</a> · <b>Русский</b></p>
+<p align="center">🌐 <a href="README.md">English</a> | <b>Русский</b></p>
 
 [![CI](https://github.com/jrfrigat/Capastrum/actions/workflows/ci.yml/badge.svg)](https://github.com/jrfrigat/Capastrum/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/badge/NuGet-7%20packages-004880?logo=nuget)](https://www.nuget.org/packages?q=Capastrum)
@@ -15,7 +15,7 @@
 [![ACP](https://img.shields.io/badge/ACP-v1-8B5CF6)](https://agentclientprotocol.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Capastrum — **«швейцарский нож» для C#-разработчиков, которые работают с ИИ-моделями и агентами**. Семь независимых NuGet-пакетов реализуют **Model Context Protocol 2026-07-28** и **Agent Client Protocol v1** как строго типизированные контракты JSON-RPC 2.0. Соберите MCP-сервер, подключитесь к чужому серверу, запускайте и контролируйте ACP-агента или предоставьте своё приложение как агента — без фреймворка, среды выполнения агентов и движка логирования.
+Capastrum - **"швейцарский нож" для C#-разработчиков, которые работают с ИИ-моделями и агентами**. Семь независимых NuGet-пакетов реализуют **Model Context Protocol 2026-07-28** и **Agent Client Protocol v1** как строго типизированные контракты JSON-RPC 2.0. Соберите MCP-сервер, подключитесь к чужому серверу, запускайте и контролируйте ACP-агента или предоставьте своё приложение как агента - без фреймворка, среды выполнения агентов и движка логирования.
 
 **Инструмент, а не фреймворк.** Каждый пакет делает одну задачу и не вмешивается в архитектуру приложения. Ваши DI, конфигурация, логирование и жизненный цикл остаются вашими; Capastrum даёт только протокольный слой.
 
@@ -185,10 +185,12 @@ await server.RunAsync(Console.OpenStandardInput(), Console.OpenStandardOutput())
 
 ```text
 Capastrum.JsonRpc
-├── Capastrum.Mcp.Protocol ── Capastrum.Mcp
-│                          └─ Capastrum.Mcp.Client
-└── Capastrum.Acp.Protocol ── Capastrum.Acp
-                           └─ Capastrum.Acp.Server
+|- Capastrum.Mcp.Protocol
+|  |- Capastrum.Mcp
+|  `- Capastrum.Mcp.Client
+`- Capastrum.Acp.Protocol
+   |- Capastrum.Acp
+   `- Capastrum.Acp.Server
 ```
 
 `Capastrum.JsonRpc` отвечает за конверт, сопоставление запросов и ответов, отмену и кадрирование потока. Протокольные пакеты превращают параметры JSON-RPC в типизированные записи и обратно через source-generated `JsonSerializerContext`. Пакеты сервера, клиента, хоста и агента содержат только поведение протокола: они не запускают контейнер зависимостей, не настраивают логирование и не владеют жизненным циклом приложения.

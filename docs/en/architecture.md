@@ -8,10 +8,12 @@
 
 ```text
 Capastrum.JsonRpc
-├── Capastrum.Mcp.Protocol ── Capastrum.Mcp
-│                          └─ Capastrum.Mcp.Client
-└── Capastrum.Acp.Protocol ── Capastrum.Acp
-                           └─ Capastrum.Acp.Server
+|- Capastrum.Mcp.Protocol
+|  |- Capastrum.Mcp
+|  `- Capastrum.Mcp.Client
+`- Capastrum.Acp.Protocol
+   |- Capastrum.Acp
+   `- Capastrum.Acp.Server
 ```
 
 The graph is a tree with one shared root. A package references only what is directly below it, and MCP never references ACP or the other way around. An application can take one branch, both branches, or a single leaf without carrying the rest.

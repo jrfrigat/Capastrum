@@ -6,7 +6,7 @@
 
 # Capastrum - MCP + ACP for .NET
 
-<p align="center">🌐 <b>English</b> · <a href="README.ru.md">Русский</a></p>
+<p align="center">🌐 <b>English</b> | <a href="README.ru.md">Русский</a></p>
 
 [![CI](https://github.com/jrfrigat/Capastrum/actions/workflows/ci.yml/badge.svg)](https://github.com/jrfrigat/Capastrum/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/badge/NuGet-7%20packages-004880?logo=nuget)](https://www.nuget.org/packages?q=Capastrum)
@@ -185,10 +185,12 @@ Dependencies point in one direction, and the two protocols never reference each 
 
 ```text
 Capastrum.JsonRpc
-├── Capastrum.Mcp.Protocol ── Capastrum.Mcp
-│                          └─ Capastrum.Mcp.Client
-└── Capastrum.Acp.Protocol ── Capastrum.Acp
-                           └─ Capastrum.Acp.Server
+|- Capastrum.Mcp.Protocol
+|  |- Capastrum.Mcp
+|  `- Capastrum.Mcp.Client
+`- Capastrum.Acp.Protocol
+   |- Capastrum.Acp
+   `- Capastrum.Acp.Server
 ```
 
 `Capastrum.JsonRpc` owns the envelope, request correlation, cancellation and stream framing. Protocol packages turn JSON-RPC parameters into typed records and back through source-generated `JsonSerializerContext` instances. The server, client, host and agent packages contain only protocol behavior; they do not start a dependency injection container, configure logging or own the application's lifetime.
