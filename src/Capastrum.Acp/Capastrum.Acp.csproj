@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>ACP host for launching and orchestrating AI agents with human-in-the-loop control.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Capastrum.Acp.Protocol/Capastrum.Acp.Protocol.csproj" />
+  </ItemGroup>
+</Project>

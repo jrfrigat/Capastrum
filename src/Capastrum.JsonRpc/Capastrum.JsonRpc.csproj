@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>JSON-RPC 2.0 peer, message model and transports for Capastrum.</Description>
+  </PropertyGroup>
+</Project>

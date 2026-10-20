@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>MCP server with tools, resources and prompts.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Capastrum.Mcp.Protocol/Capastrum.Mcp.Protocol.csproj" />
+  </ItemGroup>
+</Project>

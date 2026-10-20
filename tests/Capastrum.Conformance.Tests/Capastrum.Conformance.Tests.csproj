@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../../src/Capastrum.JsonRpc/Capastrum.JsonRpc.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Mcp.Protocol/Capastrum.Mcp.Protocol.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Mcp/Capastrum.Mcp.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Mcp.Client/Capastrum.Mcp.Client.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Acp.Protocol/Capastrum.Acp.Protocol.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Acp/Capastrum.Acp.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Acp.Server/Capastrum.Acp.Server.csproj" />
+  </ItemGroup>
+</Project>

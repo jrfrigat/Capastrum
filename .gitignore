@@ -28,6 +28,7 @@ artifacts/
 *.trx
 coverage/
 coverage.*
+BenchmarkDotNet.Artifacts/
 
 # OS files
 .DS_Store

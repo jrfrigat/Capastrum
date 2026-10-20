@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../../src/Capastrum.JsonRpc/Capastrum.JsonRpc.csproj" />
+  </ItemGroup>
+</Project>

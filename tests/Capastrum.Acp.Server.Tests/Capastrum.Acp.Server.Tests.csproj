@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../../src/Capastrum.JsonRpc/Capastrum.JsonRpc.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Acp.Protocol/Capastrum.Acp.Protocol.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Acp.Server/Capastrum.Acp.Server.csproj" />
+  </ItemGroup>
+</Project>

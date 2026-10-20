@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>MCP client for connecting C# applications to external tool servers.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Capastrum.Mcp.Protocol/Capastrum.Mcp.Protocol.csproj" />
+  </ItemGroup>
+</Project>

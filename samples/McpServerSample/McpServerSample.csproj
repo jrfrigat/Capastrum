@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../../src/Capastrum.Mcp/Capastrum.Mcp.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>ACP agent server for exposing a C# application as an agent.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Capastrum.Acp.Protocol/Capastrum.Acp.Protocol.csproj" />
+  </ItemGroup>
+</Project>

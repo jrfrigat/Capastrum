@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>Model Context Protocol 2026-07-28 contracts for Capastrum.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Capastrum.JsonRpc/Capastrum.JsonRpc.csproj" />
+  </ItemGroup>
+</Project>
