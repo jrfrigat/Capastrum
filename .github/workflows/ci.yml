@@ -44,6 +44,9 @@ jobs:
       - name: Test
         run: dotnet test Capastrum.sln -c Release --no-build
 
+      - name: Benchmark smoke
+        run: dotnet run -c Release --no-build --project benchmarks/Capastrum.Benchmarks -- --filter "*" --job Dry
+
       - name: Pack
         run: dotnet pack Capastrum.sln -c Release --no-build -o artifacts/packages
 

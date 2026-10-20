@@ -2,6 +2,8 @@
   <ItemGroup>
     <ProjectReference Include="../../src/Capastrum.JsonRpc/Capastrum.JsonRpc.csproj" />
     <ProjectReference Include="../../src/Capastrum.Mcp.Protocol/Capastrum.Mcp.Protocol.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Mcp/Capastrum.Mcp.csproj" />
+    <ProjectReference Include="../../src/Capastrum.Mcp.Client/Capastrum.Mcp.Client.csproj" />
     <ProjectReference Include="../../src/Capastrum.Acp.Protocol/Capastrum.Acp.Protocol.csproj" />
   </ItemGroup>
 </Project>
