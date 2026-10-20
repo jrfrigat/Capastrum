@@ -20,6 +20,12 @@ public sealed record AcpSessionNotification
     /// <summary>Implementation-specific metadata.</summary>
     [JsonPropertyName("_meta")]
     public Dictionary<string, JsonElement>? Meta { get; init; }
+
+    /// <summary>The text carried by this update, when it is a text chunk.</summary>
+    [JsonIgnore]
+    public string? Text => Update is AcpContentChunkUpdate chunk && chunk.Content is AcpTextContent text
+        ? text.Text
+        : null;
 }
 
 /// <summary>
