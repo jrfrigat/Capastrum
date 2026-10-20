@@ -44,6 +44,12 @@ Write commit messages as one short, natural sentence in plain English, for examp
 - New protocol behavior needs a contract test; changes that cross MCP and ACP belong in `Capastrum.Conformance.Tests`.
 - Do not add a dependency that a package does not need. `Capastrum.JsonRpc` has no dependency outside the base class library.
 
+## Releases (maintainers)
+
+Releases are cut by pushing a tag `vX.Y.Z`. MinVer derives the package version from the tag, and the release workflow builds, tests, packs, verifies, publishes all packages to NuGet.org and creates a GitHub Release.
+
+Publishing uses NuGet Trusted Publishing. Before the first release, configure a trusted publisher policy on nuget.org for this repository and `.github/workflows/release.yml`, and set the `NUGET_USER` repository variable to the nuget.org account name. No long-lived NuGet API key is stored in GitHub.
+
 ## Reporting bugs and requesting features
 
 Use the GitHub issue tracker. For security issues, read [SECURITY.md](SECURITY.md) and report privately instead of opening a public issue.

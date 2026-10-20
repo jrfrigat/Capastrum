@@ -19,6 +19,8 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/jrfrigat/Capastrum</RepositoryUrl>
     <PackageProjectUrl>https://github.com/jrfrigat/Capastrum</PackageProjectUrl>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>

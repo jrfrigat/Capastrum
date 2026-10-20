@@ -1,12 +1,23 @@
-name: Release
+name: Release (NuGet)
+
+# Publishes all packable Capastrum packages to NuGet.org.
+# Trigger by pushing a version tag, for example: git tag v1.0.0 && git push origin v1.0.0
+# MinVer derives the package version from that tag.
+# Trusted Publishing requires a nuget.org trusted publisher policy for this repository and
+# this workflow, and the NUGET_USER repository variable.
 
 on:
   push:
     tags:
       - "v*"
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
-  contents: read
+  contents: write
+  id-token: write
 
 env:
   DOTNET_NOLOGO: true
@@ -18,9 +29,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
 
@@ -40,16 +53,26 @@ jobs:
         shell: pwsh
         run: ./eng/verify-packages.ps1
 
-      - name: Publish to NuGet
+      - name: NuGet login (Trusted Publishing)
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Push to NuGet.org
+        run: >
+          dotnet nuget push "artifacts/packages/*.nupkg"
+          --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
+
+      - name: Create GitHub Release
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        run: |
-          for package in artifacts/packages/*.nupkg; do
-            dotnet nuget push "$package" --api-key "$NUGET_API_KEY" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
-          done
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${{ github.ref_name }}" artifacts/packages/*.nupkg --generate-notes --title "${{ github.ref_name }}"
 
       - name: Upload packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release-packages
           path: artifacts/packages/*
