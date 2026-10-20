@@ -30,6 +30,11 @@ public sealed class JsonRpcPeer : IAsyncDisposable
     }
 
     /// <summary>
+    /// Completes when the read loop ends.
+    /// </summary>
+    public Task Completion => _readLoop;
+
+    /// <summary>
     /// Handles requests received from the remote peer. A null handler answers method-not-found.
     /// </summary>
     public Func<JsonRpcRequest, CancellationToken, ValueTask<JsonRpcResponse>>? RequestHandler { get; set; }

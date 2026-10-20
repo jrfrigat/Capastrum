@@ -13,4 +13,4 @@ namespace Capastrum.JsonRpc.Serialization;
 [JsonSerializable(typeof(JsonRpcResponse))]
 [JsonSerializable(typeof(JsonRpcNotification))]
 [JsonSerializable(typeof(JsonRpcError))]
-internal sealed partial class JsonRpcJsonContext : JsonSerializerContext;
+public sealed partial class JsonRpcJsonContext : JsonSerializerContext;
