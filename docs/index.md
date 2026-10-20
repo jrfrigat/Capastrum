@@ -22,10 +22,8 @@
 ## Guides
 
 - JSON-RPC core — [json-rpc.md](json-rpc.md)
-- MCP server quick start — planned.
-- MCP client quick start — planned.
-- ACP host quick start — planned.
-- ACP agent quick start — planned.
+- MCP server and client — [mcp.md](mcp.md)
+- ACP host and agent — [acp.md](acp.md)
 
 ## Contributing
 

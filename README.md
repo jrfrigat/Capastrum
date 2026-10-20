@@ -30,60 +30,92 @@ The name comes from Latin *capistrum* — a halter or a binding. The library bin
 
 ```csharp
 using Capastrum.Mcp;
+using Capastrum.Mcp.Protocol;
 
-await using var server = new McpServer(new McpServerOptions
+var server = new McpServer(new McpServerOptions
 {
     Name = "Capastrum-Tools",
     Version = "1.0.0",
 });
 
 server.RegisterTool(
-    "read_kanban_board",
-    "Returns the active cards",
-    async (request, cancellationToken) =>
-    {
-        var cards = await backlog.GetActiveCardsAsync(cancellationToken);
-        return McpToolResult.Json(cards);
-    });
+    "echo",
+    "Echoes a value",
+    (context, _) => ValueTask.FromResult<McpResult>(
+        McpToolResult.Text(context.Arguments.GetProperty("value").GetString() ?? string.Empty)));
 
-await server.RunAsync(McpTransport.Stdio);
+await server.RunAsync(Console.OpenStandardInput(), Console.OpenStandardOutput());
 ```
 
 ### MCP client
 
 ```csharp
+using System.Text.Json;
 using Capastrum.Mcp.Client;
 
 await using var client = await McpClient.ConnectAsync(new StdioMcpClientOptions
 {
     Command = "my-mcp-server",
-    Arguments = [],
 });
 
 var tools = await client.ListToolsAsync();
-var result = await client.CallToolAsync("read_kanban_board", arguments: null);
+var result = await client.CallToolAsync(
+    "echo",
+    JsonSerializer.SerializeToElement(new { value = "hello" }));
 ```
 
 ### ACP host
 
 ```csharp
 using Capastrum.Acp;
+using Capastrum.Acp.Protocol;
 
-await using var agent = new AcpAgentClient(new AcpClientOptions
+await using var agent = await AcpAgentClient.StartAsync(new AcpClientOptions
 {
     Executable = "npx",
-    Arguments = ["@zed-industries/claude-code-acp"],
+    Arguments = ["-y", "@zed-industries/claude-code-acp"],
     WorkspaceRoot = "/path/to/project",
 });
 
 agent.OnSessionUpdate(update => Console.WriteLine(update.Text));
-agent.OnActionConfirm(request =>
-    request.Command.Contains("rm -rf", StringComparison.Ordinal)
+agent.OnActionConfirm((request, _) => ValueTask.FromResult(
+    request.Command?.Contains("rm -rf", StringComparison.Ordinal) == true
         ? ConfirmationResult.Denied
-        : ConfirmationResult.Allowed);
+        : ConfirmationResult.Allowed));
 
-await agent.InitializeAsync();
-await agent.SendPromptAsync("Find outdated dependencies and update them.");
+var session = await agent.NewSessionAsync("/path/to/project");
+await agent.SendPromptAsync(
+    session.SessionId,
+    [new AcpTextContent { Text = "Find outdated dependencies and update them." }]);
+```
+
+### ACP agent
+
+```csharp
+using Capastrum.Acp.Protocol;
+using Capastrum.Acp.Server;
+
+var server = new AcpAgentServer(new AcpAgentServerOptions
+{
+    AgentInfo = new AcpImplementation { Name = "MyAgent", Version = "1.0.0" },
+    NewSessionHandler = (_, _) => ValueTask.FromResult(new AcpNewSessionResponse
+    {
+        SessionId = Guid.NewGuid().ToString("N"),
+    }),
+    PromptHandler = async (context, cancellationToken) =>
+    {
+        await context.SendUpdateAsync(
+            new AcpAgentMessageChunk
+            {
+                Content = new AcpTextContent { Text = "Hello from C#." },
+            },
+            cancellationToken);
+
+        return new AcpPromptResponse { StopReason = AcpStopReason.EndTurn };
+    },
+});
+
+await server.RunAsync(Console.OpenStandardInput(), Console.OpenStandardOutput());
 ```
 
 ## Requirements
