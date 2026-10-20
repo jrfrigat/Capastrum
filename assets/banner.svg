@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-labelledby="title desc">
+  <title id="title">Capastrum - MCP and ACP for .NET 10</title>
+  <desc id="desc">Typed JSON-RPC contracts for AI tools and agents</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111F"/>
+      <stop offset="1" stop-color="#0F1B2D"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="300" fill="url(#background)"/>
+  <rect width="1280" height="8" fill="url(#accent)"/>
+
+  <g opacity="0.18" stroke="url(#accent)" fill="none">
+    <circle cx="1130" cy="80" r="150" stroke-width="1.5"/>
+    <circle cx="1130" cy="80" r="110" stroke-width="1.5"/>
+    <circle cx="1130" cy="80" r="70" stroke-width="1.5"/>
+    <path d="M980 80h300M1130 -70v300" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(64 64)">
+    <circle cx="72" cy="72" r="68" fill="none" stroke="#2DD4BF" stroke-width="12"/>
+    <path d="M102 42a44 44 0 1 0 0 60" fill="none" stroke="#2DD4BF" stroke-width="16" stroke-linecap="round"/>
+  </g>
+
+  <text x="252" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="96" font-weight="700" fill="#FFFFFF">Capastrum</text>
+  <text x="258" y="192" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="400" fill="#94A3B8">MCP + ACP for .NET 10</text>
+  <text x="258" y="238" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#5EEAD4">Typed JSON-RPC contracts for AI tools and agents</text>
+</svg>

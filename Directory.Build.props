@@ -17,7 +17,8 @@
     <Company>Capastrum</Company>
     <Product>Capastrum</Product>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/capastrum/Capastrum</RepositoryUrl>
+    <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/jrfrigat/Capastrum</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jrfrigat/Capastrum</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
