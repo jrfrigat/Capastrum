@@ -9,7 +9,7 @@ The name comes from Latin *capistrum* — a halter or a binding. The library bin
 - **Tool, not framework.** Use only the protocol pieces you need; the rest of the application stays yours.
 - **Full protocol coverage.** MCP 2026-07-28 and ACP v1, both directions, with typed requests, results and notifications.
 - **Security by default.** ACP permission requests can be inspected, allowed or denied before a terminal command or a file edit runs.
-- **Built for performance.** `System.Text.Json` source generation, `System.IO.Pipelines` framing and allocation-conscious hot paths.
+- **Built for performance.** `System.Text.Json` source generation, `System.IO.Pipelines` framing and allocation-conscious hot paths. No JSON.NET, no Newtonsoft.Json.
 - **Independent packages.** Every package is published separately and carries only its own dependencies.
 
 ## Packages

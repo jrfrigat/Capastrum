@@ -1,4 +1,4 @@
 using BenchmarkDotNet.Running;
 using Capastrum.Benchmarks;
 
-BenchmarkRunner.Run<JsonPayloadBenchmarks>();
+BenchmarkSwitcher.FromAssembly(typeof(JsonRpcEnvelopeBenchmarks).Assembly).Run(args);

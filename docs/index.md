@@ -15,12 +15,13 @@
 ## Design
 
 - Wire format: JSON-RPC 2.0 over newline-delimited JSON, WebSocket frames or HTTP.
-- Serialization: `System.Text.Json` with source-generated contexts.
+- Serialization: `System.Text.Json` with source-generated contexts; JSON.NET is not used.
 - Transports: `System.IO.Pipelines` for stream framing.
 - Protocol versions: MCP `2026-07-28`, ACP `1`.
 
 ## Guides
 
+- JSON-RPC core — [json-rpc.md](json-rpc.md)
 - MCP server quick start — planned.
 - MCP client quick start — planned.
 - ACP host quick start — planned.

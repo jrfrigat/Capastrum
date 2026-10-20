@@ -24,6 +24,7 @@ csharp_style_expression_bodied_constructors = when_on_single_line:silent
 csharp_style_expression_bodied_properties = when_on_single_line:silent
 dotnet_diagnostic.CS1591.severity = warning
 dotnet_diagnostic.IDE0005.severity = warning
+dotnet_diagnostic.IDE0008.severity = none
 dotnet_diagnostic.IDE0161.severity = warning
 dotnet_diagnostic.IDE1006.severity = warning
 
